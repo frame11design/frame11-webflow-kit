@@ -1,0 +1,27 @@
+{
+  "name": "frame11-webflow-kit",
+  "version": "0.1.0",
+  "description": "A small, reusable TypeScript toolkit for behavior in Webflow projects.",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "keywords": [
+    "webflow",
+    "typescript",
+    "custom-code"
+  ],
+  "license": "MIT"
+}
