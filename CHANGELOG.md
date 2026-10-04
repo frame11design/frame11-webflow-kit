@@ -4,6 +4,16 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-04
+
+### Added
+
+- Bundled Vanilla CookieConsent 3.1.0 integration.
+- Validated site configuration via `script[data-f11-consent-config]`.
+- Google Consent Mode updates and standardized `f11_consent_update` events.
+- Webflow preference triggers through `data-f11-consent-open`.
+- Consent setup documentation and local playground coverage.
+
 ## [0.1.0] - 2026-10-04
 
 ### Added

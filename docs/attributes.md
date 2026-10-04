@@ -14,7 +14,9 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-back` | Move to the previous step | Reserved |
 | `data-f11-progress` | Expose multi-step progress | Reserved |
 | `data-f11-nav` | Enable navigation helpers | Placeholder |
-| `data-f11-consent` | Identify consent UI | Placeholder |
+| `data-f11-consent` | Enable consent when placed on `<html>` | Available |
+| `data-f11-consent-config` | Identify the site-specific JSON configuration script | Available |
+| `data-f11-consent-open` | Open the preferences modal from a Webflow button or link | Available |
 | `data-f11-integration` | Opt into an integration hook | Placeholder |
 
 ## Runtime and state attributes

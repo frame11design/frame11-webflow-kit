@@ -2,7 +2,7 @@
 
 FRAME11 Webflow Kit is a small TypeScript library for reusable behavior across Webflow projects. It replaces copied project snippets with one understandable, versioned codebase while leaving structure and visual design in Webflow.
 
-The project is intentionally at foundation stage. Forms, multi-step forms, navigation, consent, and integrations are registered as future modules but do not yet implement production behavior.
+The project is intentionally small. Cookie consent is the first implemented module; forms, multi-step forms, navigation, and other integrations remain placeholders.
 
 ## Principles
 
@@ -22,7 +22,7 @@ The project is intentionally at foundation stage. Forms, multi-step forms, navig
 - CSS for behavior-specific states only
 - Git and, when connected, GitHub
 
-There are no runtime dependencies and no Node.js APIs in the browser bundle.
+Vanilla CookieConsent is the only browser dependency and is bundled into the production assets. The browser bundle has no Node.js runtime dependency.
 
 ## Requirements and installation
 
@@ -78,20 +78,21 @@ After a tagged release exists on GitHub, use fixed versions rather than `latest`
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/OWNER/frame11-webflow-kit@v0.1.0/dist/frame11.css"
+  href="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.css"
 >
 <script
   defer
-  src="https://cdn.jsdelivr.net/gh/OWNER/frame11-webflow-kit@v0.1.0/dist/frame11.js"
+  src="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.js"
 ></script>
 ```
 
-Replace `OWNER` with the GitHub account or organization. See [docs/webflow-setup.md](docs/webflow-setup.md) before using a release in Webflow.
+See [docs/webflow-setup.md](docs/webflow-setup.md) before using a release in Webflow.
 
 ## Project documentation
 
 - [Architecture](docs/architecture.md)
 - [Attribute namespace](docs/attributes.md)
+- [Cookie consent](docs/consent.md)
 - [Webflow setup](docs/webflow-setup.md)
 - [Changelog](CHANGELOG.md)
 

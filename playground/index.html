@@ -1,15 +1,106 @@
 <!doctype html>
-<html lang="en" data-f11-debug>
+<html lang="de" data-f11-debug data-f11-consent>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FRAME11 Webflow Kit playground</title>
+    <script>
+      (() => {
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+
+        gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500,
+        });
+      })();
+    </script>
+    <script type="application/json" data-f11-consent-config>
+      {
+        "mode": "opt-in",
+        "revision": 1,
+        "guiOptions": {
+          "consentModal": {
+            "layout": "box",
+            "position": "bottom right",
+            "equalWeightButtons": true,
+            "flipButtons": false
+          },
+          "preferencesModal": {
+            "layout": "box",
+            "position": "right",
+            "equalWeightButtons": true
+          }
+        },
+        "categories": {
+          "necessary": {
+            "enabled": true,
+            "readOnly": true
+          },
+          "analytics": {},
+          "marketing": {}
+        },
+        "language": {
+          "default": "de",
+          "translations": {
+            "de": {
+              "consentModal": {
+                "title": "Cookie-Einstellungen",
+                "description": "Wir verwenden Cookies. Sie entscheiden selbst, welche Kategorien Sie zulassen möchten.",
+                "acceptAllBtn": "Alle akzeptieren",
+                "acceptNecessaryBtn": "Nur notwendige",
+                "showPreferencesBtn": "Einstellungen"
+              },
+              "preferencesModal": {
+                "title": "Datenschutz & Cookies",
+                "acceptAllBtn": "Alle akzeptieren",
+                "acceptNecessaryBtn": "Nur notwendige Cookies",
+                "savePreferencesBtn": "Auswahl speichern",
+                "closeIconLabel": "Einstellungen schließen",
+                "sections": [
+                  {
+                    "title": "Ihre Auswahl",
+                    "description": "Sie können Ihre Auswahl jederzeit ändern."
+                  },
+                  {
+                    "title": "Notwendige Cookies",
+                    "description": "Diese Cookies sind für den Betrieb erforderlich.",
+                    "linkedCategory": "necessary"
+                  },
+                  {
+                    "title": "Statistik",
+                    "description": "Diese Cookies helfen uns, die Nutzung der Website zu verstehen.",
+                    "linkedCategory": "analytics"
+                  },
+                  {
+                    "title": "Marketing",
+                    "description": "Diese Cookies unterstützen relevante Inhalte und Angebote.",
+                    "linkedCategory": "marketing"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    </script>
     <script type="module" src="/src/index.ts"></script>
   </head>
   <body>
     <main>
       <h1>FRAME11 Webflow Kit</h1>
       <p data-f11-form>The forms placeholder should be detected once.</p>
+      <button type="button" data-f11-consent-open>
+        Cookie-Einstellungen öffnen
+      </button>
     </main>
   </body>
 </html>

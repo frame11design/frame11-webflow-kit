@@ -1,6 +1,6 @@
 # Webflow setup
 
-The current `0.1.0` build is an architectural foundation, not a production feature release. These steps describe the intended integration once a tagged GitHub release is available.
+Use only a tagged release that has been tested on the Webflow staging domain. Cookie consent also requires the setup in [consent.md](consent.md).
 
 ## Include the stylesheet
 
@@ -9,7 +9,7 @@ Add a version-pinned stylesheet link in the Webflow site's head custom code:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/OWNER/frame11-webflow-kit@v0.1.0/dist/frame11.css"
+  href="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.css"
 >
 ```
 
@@ -20,17 +20,17 @@ Add the script before the closing body tag. `defer` is recommended even though t
 ```html
 <script
   defer
-  src="https://cdn.jsdelivr.net/gh/OWNER/frame11-webflow-kit@v0.1.0/dist/frame11.js"
+  src="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.js"
 ></script>
 ```
 
-Replace `OWNER` and the version tag. Never use `latest` for a customer project. A fixed tag prevents an unrelated release from changing a live site unexpectedly.
+Change only the explicit version tag when upgrading. Never use `latest` for a customer project. A fixed tag prevents an unrelated release from changing a live site unexpectedly.
 
 ## Configure features
 
 Add documented `data-f11-*` custom attributes to the relevant Webflow elements. Do not put API keys, IDs, personal data, or credentials into these attributes.
 
-The feature modules are placeholders in `0.1.0`; their full attribute contracts will be added with their implementations.
+The consent module is available. Forms, navigation, and general integrations remain placeholders until their contracts are documented and implemented.
 
 ## Debug locally or on staging
 

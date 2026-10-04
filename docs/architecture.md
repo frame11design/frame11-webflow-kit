@@ -21,7 +21,7 @@ This keeps project-specific design editable in Webflow and shared behavior testa
 
 Feature modules expose a small definition with a unique name, a detection selector, and an initialization function. No abstract base classes, dependency injection container, or framework lifecycle is needed.
 
-The current module files are placeholders only. Their selectors establish the intended extension points without implementing form, navigation, consent, or integration behavior.
+Forms, navigation, and general integrations are placeholders. Consent is the first implemented module and follows the same one-time initialization lifecycle.
 
 ## Browser API
 
@@ -50,10 +50,15 @@ The future navigation module may coordinate open/close state, scroll locking, ba
 
 ## Consent and integrations
 
-Consent is timing-sensitive. A later release may produce a second, very small head bundle that establishes the stored consent state and Google Consent Mode before normal tracking tags run. That decision should be made when consent requirements are implemented; it is not part of the current bundle.
+Consent has two timing layers:
 
-Google Tag Manager should fan out consent-aware configuration to Google Analytics, Google Ads, Meta Pixel, and similar tools. Vendor IDs and customer credentials belong in the customer environment, never in this repository.
+1. A tiny synchronous snippet in the Webflow head establishes Google Consent Mode defaults before Google Tag Manager.
+2. The normal FRAME11 runtime loads the consent UI after DOM ready, reads the site-specific JSON configuration, and updates consent when the visitor makes or changes a choice.
+
+Vanilla CookieConsent is bundled into FRAME11. Its callbacks, script handling, and opt-in mode are controlled by the library. Each Webflow project supplies only JSON data: UI options, categories, services, translations, and a revision number. Invalid configuration fails without granting optional consent; the head defaults remain in effect.
+
+Google Tag Manager fans out consent-aware configuration to Google Analytics, Google Ads, Meta Pixel, and similar tools. Google tags use Consent Mode, while other vendors can react to the `f11_consent_update` data-layer event. Vendor IDs and customer credentials belong in the customer environment, never in this repository.
 
 ## Distribution and releases
 
-Production builds produce `dist/frame11.js` and `dist/frame11.css`. Because jsDelivr can serve files from GitHub tags, release builds in `dist/` are versioned. Webflow projects must reference an explicit tag such as `v0.1.0`, never `latest` or an unpinned branch.
+Production builds produce `dist/frame11.js` and `dist/frame11.css`. Because jsDelivr can serve files from GitHub tags, release builds in `dist/` are versioned. Webflow projects must reference an explicit tag such as `v0.2.0`, never `latest` or an unpinned branch.
