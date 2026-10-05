@@ -61,4 +61,4 @@ Google Tag Manager fans out consent-aware configuration to Google Analytics, Goo
 
 ## Distribution and releases
 
-Production builds produce `dist/frame11.js` and `dist/frame11.css`. Because jsDelivr can serve files from GitHub tags, release builds in `dist/` are versioned. Webflow projects must reference an explicit tag such as `v0.2.0`, never `latest` or an unpinned branch.
+Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. The Cloudflare Worker serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.2.0/frame11.js`, never an unversioned file.

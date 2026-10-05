@@ -53,7 +53,7 @@ Replace `GTM-<gtm-id>` only in the GTM snippet. Never store the container ID in 
 
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.css"
+  href="https://frame11-webflow-kit.michael-906.workers.dev/v0.2.0/frame11.css"
 >
 ```
 
@@ -184,7 +184,7 @@ Increase `revision` when visitors must be asked again after a material policy or
 
 <script
   defer
-  src="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.js"
+  src="https://frame11-webflow-kit.michael-906.workers.dev/v0.2.0/frame11.js"
 ></script>
 ```
 

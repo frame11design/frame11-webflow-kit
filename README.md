@@ -47,14 +47,14 @@ npm run typecheck
 npm run build
 ```
 
-The production build creates:
+The production build creates an immutable directory from the package version:
 
 ```text
-dist/frame11.js
-dist/frame11.css
+dist/v0.2.0/frame11.js
+dist/v0.2.0/frame11.css
 ```
 
-`frame11.js` is an immediately invoked browser bundle, so it can be loaded by a normal Webflow `<script>` tag without a module loader. `dist/` is intentionally committed for direct, version-pinned delivery through jsDelivr.
+`frame11.js` is an immediately invoked browser bundle, so it can be loaded by a normal Webflow `<script>` tag without a module loader. Published version directories are retained side by side so an existing Webflow project is never silently updated.
 
 ## Runtime
 
@@ -73,16 +73,16 @@ Debug logging can also be enabled with `data-f11-debug` on the `<html>` element.
 
 ## Webflow and CDN usage
 
-After a tagged release exists on GitHub, use fixed versions rather than `latest`:
+Use a fixed release path rather than an unversioned URL:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.css"
+  href="https://frame11-webflow-kit.michael-906.workers.dev/v0.2.0/frame11.css"
 >
 <script
   defer
-  src="https://cdn.jsdelivr.net/gh/frame11design/frame11-webflow-kit@v0.2.0/dist/frame11.js"
+  src="https://frame11-webflow-kit.michael-906.workers.dev/v0.2.0/frame11.js"
 ></script>
 ```
 
