@@ -4,6 +4,15 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-06
+
+### Added
+
+- Accessible inline validation for Webflow forms using native HTML constraints.
+- Per-field required and invalid messages through `data-f11-error-required` and `data-f11-error-invalid`.
+- Validation state hooks through `data-f11-invalid`, `data-f11-error`, `aria-invalid`, and `aria-describedby`.
+- Styled submit triggers through `data-f11-submit`, while preserving Webflow's native submit flow.
+
 ## [0.2.0] - 2026-10-04
 
 ### Added

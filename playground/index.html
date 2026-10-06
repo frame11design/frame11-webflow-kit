@@ -97,7 +97,19 @@
   <body>
     <main>
       <h1>FRAME11 Webflow Kit</h1>
-      <p data-f11-form>The forms placeholder should be detected once.</p>
+      <form data-f11-form>
+        <label for="playground-email">E-Mail-Adresse</label>
+        <input
+          id="playground-email"
+          name="email"
+          type="email"
+          required
+          data-f11-error-required="Bitte gib deine E-Mail-Adresse ein."
+          data-f11-error-invalid="Bitte gib eine gültige E-Mail-Adresse ein."
+        />
+        <input type="submit" value="Native submit" data-f11-hidden />
+        <a href="#" data-f11-submit>Formular absenden</a>
+      </form>
       <button type="button" data-f11-consent-open>
         Cookie-Einstellungen öffnen
       </button>

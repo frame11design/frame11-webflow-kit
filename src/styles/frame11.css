@@ -6,7 +6,14 @@
 }
 
 [data-f11-error] {
-  color: var(--f11-error-color, currentColor);
+  color: var(--f11-error-color, #b42318);
+  font-size: var(--f11-error-font-size, 0.875rem);
+  line-height: var(--f11-error-line-height, 1.4);
+  margin-top: var(--f11-error-gap, 0.5rem);
+}
+
+[data-f11-invalid] {
+  border-color: var(--f11-error-color, #b42318);
 }
 
 html[data-f11-scroll-lock],

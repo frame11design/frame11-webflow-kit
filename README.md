@@ -2,7 +2,7 @@
 
 FRAME11 Webflow Kit is a small TypeScript library for reusable behavior across Webflow projects. It replaces copied project snippets with one understandable, versioned codebase while leaving structure and visual design in Webflow.
 
-The project is intentionally small. Cookie consent is the first implemented module; forms, multi-step forms, navigation, and other integrations remain placeholders.
+The project is intentionally small. Forms and cookie consent are implemented; multi-step forms, navigation, and other integrations remain placeholders.
 
 ## Principles
 
@@ -44,14 +44,15 @@ Open `/playground/` on the URL printed by Vite. The playground is deliberately m
 
 ```bash
 npm run typecheck
+npm test
 npm run build
 ```
 
 The production build creates an immutable directory from the package version:
 
 ```text
-dist/v0.2.0/frame11.js
-dist/v0.2.0/frame11.css
+dist/v0.3.0/frame11.js
+dist/v0.3.0/frame11.css
 ```
 
 `frame11.js` is an immediately invoked browser bundle, so it can be loaded by a normal Webflow `<script>` tag without a module loader. Published version directories are retained side by side so an existing Webflow project is never silently updated.
@@ -78,11 +79,11 @@ Use a fixed release path rather than an unversioned URL:
 ```html
 <link
   rel="stylesheet"
-  href="https://frame11-webflow-kit.michael-906.workers.dev/v0.2.0/frame11.css"
+  href="https://cdn.frame11.at/v0.3.0/frame11.css"
 >
 <script
   defer
-  src="https://frame11-webflow-kit.michael-906.workers.dev/v0.2.0/frame11.js"
+  src="https://cdn.frame11.at/v0.3.0/frame11.js"
 ></script>
 ```
 
@@ -92,6 +93,7 @@ See [docs/webflow-setup.md](docs/webflow-setup.md) before using a release in Web
 
 - [Architecture](docs/architecture.md)
 - [Attribute namespace](docs/attributes.md)
+- [Forms](docs/forms.md)
 - [Cookie consent](docs/consent.md)
 - [Webflow setup](docs/webflow-setup.md)
 - [Changelog](CHANGELOG.md)
@@ -99,6 +101,24 @@ See [docs/webflow-setup.md](docs/webflow-setup.md) before using a release in Web
 ## Versioning
 
 The project follows Semantic Versioning. The `0.x` series is for development of the system; `1.0.0` will be the first stable production release.
+
+The package version determines the immutable CDN directory. For example, version
+`0.3.0` builds to `dist/v0.3.0/`. Never ship behavior changes under an existing
+version path.
+
+For a release:
+
+1. Run `npm version patch --no-git-tag-version` (or `minor`/`major`).
+2. Run `npm run typecheck` and `npm run build`.
+3. Commit `package.json`, `package-lock.json`, the source changes, and the new
+   `dist/vX.Y.Z/` directory. Keep all older version directories.
+4. Merge or push the release commit to `main`. Cloudflare Pages automatically
+   builds and deploys that branch to `cdn.frame11.at`.
+5. Verify the new versioned CSS and JavaScript URLs, then update a Webflow staging
+   site to the new version before publishing production.
+
+`npm run deploy` is only a manual fallback. The normal production path is the
+GitHub integration and requires no manual Cloudflare deployment.
 
 Never commit secrets, API keys, GTM IDs, customer data, or customer-specific credentials.
 

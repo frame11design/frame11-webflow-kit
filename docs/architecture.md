@@ -21,7 +21,7 @@ This keeps project-specific design editable in Webflow and shared behavior testa
 
 Feature modules expose a small definition with a unique name, a detection selector, and an initialization function. No abstract base classes, dependency injection container, or framework lifecycle is needed.
 
-Forms, navigation, and general integrations are placeholders. Consent is the first implemented module and follows the same one-time initialization lifecycle.
+Navigation and general integrations are placeholders. Forms and consent follow the same one-time initialization lifecycle.
 
 ## Browser API
 
@@ -40,7 +40,9 @@ FRAME11 CSS is limited to behavior-related states and CSS variables. Customer de
 
 ## Forms and multi-step forms
 
-The future forms module will enhance normal Webflow forms while keeping Webflow's submission flow. It may disable native validation UI, use the Constraint Validation API, render accessible inline errors, maintain `aria-invalid`, and read project-specific messages from `data-f11-*` attributes.
+The forms module enhances opted-in Webflow forms while keeping Webflow's submission flow. It disables only the browser's native validation popovers, uses the Constraint Validation API, renders accessible inline errors, maintains `aria-invalid`, and reads project-specific messages from `data-f11-*` attributes.
+
+A styled `data-f11-submit` control calls `requestSubmit()` with the real Webflow submit input. This means Webflow still owns the valid submission, loading state, success state, and server error state. FRAME11 stops the event only when client-side validation fails.
 
 Multi-step behavior will build on the forms module. It will manage steps, progress, next/back actions, and validation gates while preserving the final Webflow submit.
 
@@ -61,4 +63,4 @@ Google Tag Manager fans out consent-aware configuration to Google Analytics, Goo
 
 ## Distribution and releases
 
-Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. The Cloudflare Worker serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.2.0/frame11.js`, never an unversioned file.
+Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. Cloudflare Pages serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.3.0/frame11.js`, never an unversioned file.
