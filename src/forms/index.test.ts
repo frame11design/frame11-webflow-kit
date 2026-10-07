@@ -102,6 +102,26 @@ describe('FRAME11 form validation', () => {
 
     expect(field.getAttribute('aria-describedby')).toBe('email-help');
   });
+
+  it('places checkbox errors after the Webflow checkbox wrapper', () => {
+    document.body.innerHTML = `
+      <form data-f11-form>
+        <label class="w-checkbox">
+          <input type="checkbox" name="privacy" required>
+          <span>Datenschutz akzeptieren</span>
+        </label>
+      </form>
+    `;
+    const form = document.querySelector('form') as HTMLFormElement;
+    const wrapper = document.querySelector('.w-checkbox') as HTMLElement;
+
+    form.dispatchEvent(
+      new SubmitEvent('submit', { bubbles: true, cancelable: true }),
+    );
+
+    expect(wrapper.nextElementSibling?.matches('[data-f11-error]')).toBe(true);
+    expect(wrapper.querySelector('[data-f11-error]')).toBeNull();
+  });
 });
 
 describe('FRAME11 custom submit trigger', () => {

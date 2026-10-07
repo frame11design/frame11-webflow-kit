@@ -120,7 +120,14 @@ function createErrorElement(field: FormField): HTMLElement {
   element.setAttribute('aria-hidden', 'true');
   content.setAttribute('data-f11-error-content', '');
   element.append(content);
-  field.insertAdjacentElement('afterend', element);
+
+  const insertionTarget =
+    field instanceof HTMLInputElement &&
+    (field.type === 'checkbox' || field.type === 'radio')
+      ? field.closest<HTMLElement>('.w-checkbox, .w-radio') ?? field
+      : field;
+
+  insertionTarget.insertAdjacentElement('afterend', element);
   errorElements.set(field, element);
 
   return element;

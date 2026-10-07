@@ -4,6 +4,12 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-10-07
+
+### Changed
+
+- Place generated checkbox and radio errors after their Webflow wrapper so the native control layout remains intact.
+
 ## [0.4.0] - 2026-10-07
 
 ### Added
