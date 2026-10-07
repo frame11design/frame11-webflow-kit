@@ -9,7 +9,7 @@ Add a version-pinned stylesheet link in the Webflow site's head custom code:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.frame11.at/v0.4.1/frame11.css"
+  href="https://cdn.frame11.at/v0.4.2/frame11.css"
 >
 ```
 
@@ -20,7 +20,7 @@ Add the script before the closing body tag. `defer` is recommended even though t
 ```html
 <script
   defer
-  src="https://cdn.frame11.at/v0.4.1/frame11.js"
+  src="https://cdn.frame11.at/v0.4.2/frame11.js"
 ></script>
 ```
 

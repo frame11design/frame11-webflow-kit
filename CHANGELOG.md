@@ -4,6 +4,12 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-10-07
+
+### Added
+
+- Configurable invalid-field shadow through `--f11-error-shadow`, defaulting to `none` for backward compatibility.
+
 ## [0.4.1] - 2026-10-07
 
 ### Changed

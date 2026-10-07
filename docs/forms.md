@@ -32,6 +32,7 @@ FRAME11 supplies a compact default error state, while the visual design remains 
 ```css
 [data-f11-form] {
   --f11-error-color: #c62828;
+  --f11-error-shadow: 0 0 15px #c6282866;
   --f11-error-font-size: 0.875rem;
   --f11-error-line-height: 1.4;
   --f11-error-gap: 0.5rem;
@@ -41,7 +42,7 @@ FRAME11 supplies a compact default error state, while the visual design remains 
 }
 
 [data-f11-invalid] {
-  /* Add the project-specific field state here or in Webflow. */
+  /* Uses --f11-error-color and the optional --f11-error-shadow. */
 }
 
 [data-f11-error] {
@@ -50,7 +51,11 @@ FRAME11 supplies a compact default error state, while the visual design remains 
 }
 ```
 
-The generated message smoothly expands to its natural height, fades in, and moves down by `0.5rem`. This prevents the rest of the form from jumping. FRAME11 disables the transition automatically when the visitor prefers reduced motion.
+`--f11-error-shadow` defaults to `none`, so existing projects do not gain a
+shadow unless they configure one. The generated message smoothly expands to its
+natural height, fades in, and moves down by `0.5rem`. This prevents the rest of
+the form from jumping. FRAME11 disables the transition automatically when the
+visitor prefers reduced motion.
 
 ## Use a custom styled submit control
 

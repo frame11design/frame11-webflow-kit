@@ -37,6 +37,7 @@
 
 [data-f11-invalid] {
   border-color: var(--f11-error-color, #b42318);
+  box-shadow: var(--f11-error-shadow, none);
 }
 
 [data-f11-step][hidden],
