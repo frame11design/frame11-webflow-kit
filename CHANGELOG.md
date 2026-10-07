@@ -4,6 +4,14 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-07
+
+### Added
+
+- Attribute-driven multi-step forms with per-step validation and accessible progress states.
+- Staggered step transitions with directional fade, slide, blur, animated viewport height, and reduced-motion support.
+- Optional step-level error summaries and a final submit/success progress position.
+
 ## [0.3.1] - 2026-10-07
 
 ### Changed

@@ -1,6 +1,6 @@
 {
   "name": "frame11-webflow-kit",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A small, reusable TypeScript toolkit for behavior in Webflow projects.",
   "type": "module",
   "files": [

@@ -6,6 +6,10 @@ import { formsModule } from './index';
 
 beforeAll(() => {
   HTMLElement.prototype.scrollIntoView = vi.fn();
+  vi.stubGlobal(
+    'matchMedia',
+    vi.fn().mockReturnValue({ matches: true }),
+  );
   formsModule.init({ debug: false });
 });
 
@@ -141,5 +145,112 @@ describe('FRAME11 custom submit trigger', () => {
     document.querySelector<HTMLElement>('[data-f11-submit]')?.click();
 
     expect(requestSubmit).toHaveBeenCalledWith(nativeSubmit);
+  });
+});
+
+describe('FRAME11 multi-step forms', () => {
+  it('validates the current step and updates progress in both directions', async () => {
+    document.body.innerHTML = `
+      <section data-f11-multistep data-f11-progress-complete>
+        <div data-f11-progress></div>
+        <div data-f11-progress-text></div>
+        <form data-f11-form data-f11-step-viewport>
+          <div data-f11-step>
+            <input name="company" required>
+            <div data-f11-step-error>Bitte prüfen.</div>
+            <a href="#" data-f11-next>Weiter</a>
+          </div>
+          <div data-f11-step>
+            <input name="email" type="email" required>
+            <a href="#" data-f11-back>Zurück</a>
+          </div>
+        </form>
+      </section>
+    `;
+    await Promise.resolve();
+
+    const steps = document.querySelectorAll<HTMLElement>('[data-f11-step]');
+    const firstField = document.querySelector<HTMLInputElement>(
+      'input[name="company"]',
+    );
+    const progress = document.querySelector<HTMLElement>('[data-f11-progress]');
+    const progressText = document.querySelector<HTMLElement>(
+      '[data-f11-progress-text]',
+    );
+
+    document.querySelector<HTMLElement>('[data-f11-next]')?.click();
+
+    expect(steps[0]?.hidden).toBe(false);
+    expect(steps[1]?.hidden).toBe(true);
+    expect(document.querySelector<HTMLElement>('[data-f11-step-error]')?.hidden).toBe(
+      false,
+    );
+
+    if (firstField) {
+      firstField.value = 'FRAME11';
+    }
+    document.querySelector<HTMLElement>('[data-f11-next]')?.click();
+
+    expect(steps[0]?.hidden).toBe(true);
+    expect(steps[1]?.hidden).toBe(false);
+    expect(Number.parseFloat(progress?.style.width ?? '')).toBeCloseTo(66.67, 1);
+    expect(progressText?.textContent).toBe('Schritt 2 von 3');
+
+    document.querySelector<HTMLElement>('[data-f11-back]')?.click();
+
+    expect(steps[0]?.hidden).toBe(false);
+    expect(steps[1]?.hidden).toBe(true);
+    expect(Number.parseFloat(progress?.style.width ?? '')).toBeCloseTo(33.33, 1);
+  });
+
+  it('reveals an invalid hidden step and completes optional submit progress', async () => {
+    document.body.innerHTML = `
+      <section data-f11-multistep data-f11-progress-complete>
+        <div data-f11-progress></div>
+        <form data-f11-form>
+          <div data-f11-step>
+            <input name="company" required value="FRAME11">
+            <button type="button" data-f11-next>Weiter</button>
+          </div>
+          <div data-f11-step>
+            <input name="email" type="email" required value="hello@frame11.at">
+          </div>
+        </form>
+      </section>
+    `;
+    await Promise.resolve();
+
+    document.querySelector<HTMLElement>('[data-f11-next]')?.click();
+
+    const form = document.querySelector('form') as HTMLFormElement;
+    const steps = document.querySelectorAll<HTMLElement>('[data-f11-step]');
+    const company = document.querySelector<HTMLInputElement>(
+      'input[name="company"]',
+    ) as HTMLInputElement;
+    const progress = document.querySelector<HTMLElement>('[data-f11-progress]');
+
+    company.value = '';
+    const invalidSubmit = new SubmitEvent('submit', {
+      bubbles: true,
+      cancelable: true,
+    });
+    form.dispatchEvent(invalidSubmit);
+    await Promise.resolve();
+
+    expect(invalidSubmit.defaultPrevented).toBe(true);
+    expect(steps[0]?.hidden).toBe(false);
+    expect(steps[1]?.hidden).toBe(true);
+    expect(document.activeElement).toBe(company);
+
+    company.value = 'FRAME11';
+    const validSubmit = new SubmitEvent('submit', {
+      bubbles: true,
+      cancelable: true,
+    });
+    form.dispatchEvent(validSubmit);
+
+    expect(validSubmit.defaultPrevented).toBe(false);
+    expect(progress?.style.width).toBe('100%');
+    expect(progress?.getAttribute('aria-valuenow')).toBe('3');
   });
 });

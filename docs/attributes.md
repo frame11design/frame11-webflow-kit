@@ -12,11 +12,19 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-submit` | Turn a styled element into a native form submit trigger | Available |
 | `data-f11-submit-form` | Target a form by ID when the trigger is outside it | Available |
 | `data-f11-error` | Identify the generated inline validation message | Runtime state |
-| `data-f11-multistep` | Identify a multi-step form | Placeholder |
-| `data-f11-step` | Identify a form step | Reserved |
-| `data-f11-next` | Move to the next step | Reserved |
-| `data-f11-back` | Move to the previous step | Reserved |
-| `data-f11-progress` | Expose multi-step progress | Reserved |
+| `data-f11-multistep` | Enable a multi-step form on its shared wrapper | Available |
+| `data-f11-step` | Identify a form step in DOM order | Available |
+| `data-f11-next` | Validate and move to the next step | Available |
+| `data-f11-back` | Move to the previous step | Available |
+| `data-f11-step-viewport` | Animate this wrapper's height between steps | Available |
+| `data-f11-step-error` | Identify an optional step-level validation summary | Available |
+| `data-f11-step-static` | Exclude a direct step child from staggered motion | Available |
+| `data-f11-progress` | Update an accessible progress bar | Available |
+| `data-f11-progress-text` | Render the progress as a text label | Available |
+| `data-f11-progress-template` | Set a `{current}`/`{total}` text template | Available |
+| `data-f11-progress-current` | Render only the current progress number | Available |
+| `data-f11-progress-total` | Render only the total progress number | Available |
+| `data-f11-progress-complete` | Include valid submission as a final progress position | Available |
 | `data-f11-nav` | Enable navigation helpers | Placeholder |
 | `data-f11-consent` | Enable consent when placed on `<html>` | Available |
 | `data-f11-consent-config` | Identify the site-specific JSON configuration script | Available |
@@ -32,5 +40,12 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-scroll-lock` | Lock document scrolling when placed on `<html>` | CSS hook only |
 | `data-f11-invalid` | Identify a field with a current validation error | Runtime state |
 | `data-f11-error-visible` | Reveal and animate a generated inline error | Runtime state |
+| `data-f11-multistep-ready` | Mark an initialized multi-step wrapper | Runtime state |
+| `data-f11-multistep-animating` | Mark a step transition in progress | Runtime state |
+| `data-f11-step-active` | Mark the currently active step | Runtime state |
+| `data-f11-step-transition` | Expose the current enter/exit direction | Runtime state |
+| `data-f11-current-step` | Expose the one-based current progress position | Runtime state |
+| `data-f11-total-steps` | Expose the total progress positions | Runtime state |
+| `data-f11-step-error-visible` | Reveal an optional step-level error summary | Runtime state |
 
 See [forms.md](forms.md) and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.

@@ -39,13 +39,61 @@
   border-color: var(--f11-error-color, #b42318);
 }
 
+[data-f11-step][hidden],
+[data-f11-step-error][hidden] {
+  display: none !important;
+}
+
+[data-f11-step] > :not([data-f11-step-static]) {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity var(--f11-step-duration, 240ms) var(--f11-step-easing, ease),
+    transform var(--f11-step-duration, 240ms) var(--f11-step-easing, ease),
+    filter var(--f11-step-duration, 240ms) var(--f11-step-easing, ease);
+  transition-delay: var(--f11-step-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+[data-f11-step][data-f11-step-transition='enter-next']
+  > :not([data-f11-step-static]),
+[data-f11-step][data-f11-step-transition='exit-back']
+  > :not([data-f11-step-static]) {
+  filter: blur(var(--f11-step-blur, 5px));
+  opacity: 0;
+  transform: translateX(var(--f11-step-distance, 1.25rem));
+}
+
+[data-f11-step][data-f11-step-transition='enter-back']
+  > :not([data-f11-step-static]),
+[data-f11-step][data-f11-step-transition='exit-next']
+  > :not([data-f11-step-static]) {
+  filter: blur(var(--f11-step-blur, 5px));
+  opacity: 0;
+  transform: translateX(calc(var(--f11-step-distance, 1.25rem) * -1));
+}
+
+[data-f11-step-viewport] {
+  transition: height var(--f11-step-height-duration, 240ms)
+    var(--f11-step-easing, ease);
+}
+
+[data-f11-progress] {
+  transition: width var(--f11-progress-duration, 240ms)
+    var(--f11-progress-easing, ease);
+}
+
 html[data-f11-scroll-lock],
 html[data-f11-scroll-lock] body {
   overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-f11-error] {
+  [data-f11-error],
+  [data-f11-step] > :not([data-f11-step-static]),
+  [data-f11-step-viewport],
+  [data-f11-progress] {
     transform: none;
     transition: none;
   }

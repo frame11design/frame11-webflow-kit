@@ -1,5 +1,6 @@
 import type { Frame11Module } from '../core/init';
 import { debugLog } from '../core/utils';
+import { getMultistepController, initMultisteps } from './multistep';
 
 const FORM_SELECTOR = 'form[data-f11-form]';
 const SUBMIT_TRIGGER_SELECTOR = '[data-f11-submit]';
@@ -190,10 +191,19 @@ export function validateForm(form: HTMLFormElement): boolean {
   }
 
   if (firstInvalidField) {
-    firstInvalidField.focus({ preventScroll: true });
-    firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const multistep = getMultistepController(form);
+
+    if (multistep) {
+      void multistep.revealField(firstInvalidField);
+    } else {
+      firstInvalidField.focus({ preventScroll: true });
+      firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
     return false;
   }
+
+  getMultistepController(form)?.markComplete();
 
   return true;
 }
@@ -276,6 +286,8 @@ function bindDynamicElementPreparation(): void {
         }
       }
     }
+
+    initMultisteps(validateField);
   });
 
   observer.observe(document.documentElement, { childList: true, subtree: true });
@@ -310,6 +322,7 @@ function bindFormValidation(): void {
       field.form?.matches(FORM_SELECTOR)
     ) {
       validateField(field);
+      getMultistepController(field.form)?.syncStepError(field);
     }
   });
 
@@ -322,6 +335,7 @@ function bindFormValidation(): void {
       field.form?.matches(FORM_SELECTOR)
     ) {
       validateField(field);
+      getMultistepController(field.form)?.syncStepError(field);
     }
   });
 
@@ -335,6 +349,7 @@ function bindFormValidation(): void {
       (attemptedForms.has(field.form) || field.hasAttribute('data-f11-invalid'))
     ) {
       validateField(field);
+      getMultistepController(field.form)?.syncStepError(field);
     }
   });
 }
@@ -394,6 +409,7 @@ function bindSubmitTriggers(): void {
 
 function initForms(debug: boolean): void {
   prepareElements(document);
+  initMultisteps(validateField);
   bindDynamicElementPreparation();
   bindFormValidation();
   bindSubmitTriggers();

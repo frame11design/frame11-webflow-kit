@@ -110,6 +110,34 @@
         <input type="submit" value="Native submit" data-f11-hidden />
         <a href="#" data-f11-submit>Formular absenden</a>
       </form>
+      <section data-f11-multistep data-f11-progress-complete>
+        <h2>Multi-step form</h2>
+        <div style="height: 0.25rem; background: #ddd">
+          <div data-f11-progress style="height: 100%; background: #222"></div>
+        </div>
+        <p data-f11-progress-text></p>
+        <div data-f11-step-viewport>
+          <form data-f11-form>
+            <div data-f11-step>
+              <label for="playground-company">Firma</label>
+              <input id="playground-company" name="company" required />
+              <div data-f11-step-error>Bitte überprüfe deine Eingabe.</div>
+              <button type="button" data-f11-next>Weiter</button>
+            </div>
+            <div data-f11-step>
+              <label for="playground-multistep-email">E-Mail-Adresse</label>
+              <input
+                id="playground-multistep-email"
+                name="email"
+                type="email"
+                required
+              />
+              <button type="button" data-f11-back>Zurück</button>
+              <button type="submit">Absenden</button>
+            </div>
+          </form>
+        </div>
+      </section>
       <button type="button" data-f11-consent-open>
         Cookie-Einstellungen öffnen
       </button>
