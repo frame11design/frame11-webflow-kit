@@ -35,6 +35,9 @@ FRAME11 supplies a compact default error state, while the visual design remains 
   --f11-error-font-size: 0.875rem;
   --f11-error-line-height: 1.4;
   --f11-error-gap: 0.5rem;
+  --f11-error-duration: 180ms;
+  --f11-error-opacity-duration: 140ms;
+  --f11-error-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 [data-f11-invalid] {
@@ -46,6 +49,8 @@ FRAME11 supplies a compact default error state, while the visual design remains 
   font-size: 0.875rem;
 }
 ```
+
+The generated message smoothly expands to its natural height, fades in, and moves down by `0.5rem`. This prevents the rest of the form from jumping. FRAME11 disables the transition automatically when the visitor prefers reduced motion.
 
 ## Use a custom styled submit control
 

@@ -103,6 +103,7 @@ function removeTokenAttribute(
 
 function createErrorElement(field: FormField): HTMLElement {
   const element = document.createElement('div');
+  const content = document.createElement('div');
   const fieldName = field.id || field.name || 'field';
   let id = `${fieldName}-f11-error`;
 
@@ -112,10 +113,12 @@ function createErrorElement(field: FormField): HTMLElement {
   }
 
   element.id = id;
-  element.hidden = true;
   element.setAttribute('data-f11-error', '');
   element.setAttribute('role', 'alert');
   element.setAttribute('aria-live', 'polite');
+  element.setAttribute('aria-hidden', 'true');
+  content.setAttribute('data-f11-error-content', '');
+  element.append(content);
   field.insertAdjacentElement('afterend', element);
   errorElements.set(field, element);
 
@@ -124,6 +127,16 @@ function createErrorElement(field: FormField): HTMLElement {
 
 function getErrorElement(field: FormField): HTMLElement {
   return errorElements.get(field) ?? createErrorElement(field);
+}
+
+function getErrorContent(error: HTMLElement): HTMLElement {
+  const content = error.querySelector<HTMLElement>('[data-f11-error-content]');
+
+  if (!content) {
+    throw new Error('[FRAME11] Form error content is missing.');
+  }
+
+  return content;
 }
 
 export function validateField(field: FormField): boolean {
@@ -135,8 +148,8 @@ export function validateField(field: FormField): boolean {
     field.removeAttribute('aria-invalid');
 
     if (error) {
-      error.hidden = true;
-      error.textContent = '';
+      error.removeAttribute('data-f11-error-visible');
+      error.setAttribute('aria-hidden', 'true');
       removeTokenAttribute(field, 'aria-describedby', error.id);
 
       if (field.getAttribute('aria-errormessage') === error.id) {
@@ -148,8 +161,17 @@ export function validateField(field: FormField): boolean {
   }
 
   const activeError = getErrorElement(field);
-  activeError.textContent = getErrorMessage(field, issue);
-  activeError.hidden = false;
+  const wasVisible = activeError.hasAttribute('data-f11-error-visible');
+  getErrorContent(activeError).textContent = getErrorMessage(field, issue);
+
+  if (!wasVisible) {
+    // Ensure a newly inserted error paints in its collapsed state first so the
+    // initial reveal transitions instead of appearing at its final height.
+    void activeError.offsetHeight;
+  }
+
+  activeError.setAttribute('data-f11-error-visible', '');
+  activeError.setAttribute('aria-hidden', 'false');
   field.setAttribute('data-f11-invalid', '');
   field.setAttribute('aria-invalid', 'true');
   field.setAttribute('aria-errormessage', activeError.id);

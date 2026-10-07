@@ -31,5 +31,6 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-hidden` | Hide an element with the minimal library stylesheet | Available |
 | `data-f11-scroll-lock` | Lock document scrolling when placed on `<html>` | CSS hook only |
 | `data-f11-invalid` | Identify a field with a current validation error | Runtime state |
+| `data-f11-error-visible` | Reveal and animate a generated inline error | Runtime state |
 
 See [forms.md](forms.md) and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.

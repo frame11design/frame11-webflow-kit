@@ -4,6 +4,13 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-10-07
+
+### Changed
+
+- Animate inline form errors with a subtle height expansion, fade, and `0.5rem` drop-in motion.
+- Respect `prefers-reduced-motion` for form error transitions.
+
 ## [0.3.0] - 2026-10-06
 
 ### Added

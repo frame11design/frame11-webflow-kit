@@ -1,15 +1,38 @@
 /* FRAME11 only supplies behavior-related states. Project design stays in Webflow. */
 
-[data-f11-error][hidden],
 [data-f11-hidden] {
   display: none !important;
 }
 
 [data-f11-error] {
   color: var(--f11-error-color, #b42318);
+  display: grid;
   font-size: var(--f11-error-font-size, 0.875rem);
+  grid-template-rows: 0fr;
   line-height: var(--f11-error-line-height, 1.4);
+  margin-top: 0;
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  transition:
+    grid-template-rows var(--f11-error-duration, 180ms)
+      var(--f11-error-easing, cubic-bezier(0.2, 0.8, 0.2, 1)),
+    margin-top var(--f11-error-duration, 180ms)
+      var(--f11-error-easing, cubic-bezier(0.2, 0.8, 0.2, 1)),
+    opacity var(--f11-error-opacity-duration, 140ms) ease,
+    transform var(--f11-error-duration, 180ms)
+      var(--f11-error-easing, cubic-bezier(0.2, 0.8, 0.2, 1));
+}
+
+[data-f11-error-content] {
+  min-height: 0;
+  overflow: hidden;
+}
+
+[data-f11-error][data-f11-error-visible] {
+  grid-template-rows: 1fr;
   margin-top: var(--f11-error-gap, 0.5rem);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 [data-f11-invalid] {
@@ -19,4 +42,11 @@
 html[data-f11-scroll-lock],
 html[data-f11-scroll-lock] body {
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-f11-error] {
+    transform: none;
+    transition: none;
+  }
 }

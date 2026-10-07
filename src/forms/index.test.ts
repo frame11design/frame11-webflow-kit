@@ -38,7 +38,9 @@ describe('FRAME11 form validation', () => {
     const error = document.querySelector<HTMLElement>('[data-f11-error]');
     expect(event.defaultPrevented).toBe(true);
     expect(error?.textContent).toBe('Bitte gib deinen Vornamen ein.');
-    expect(error?.hidden).toBe(false);
+    expect(error?.hasAttribute('data-f11-error-visible')).toBe(true);
+    expect(error?.getAttribute('aria-hidden')).toBe('false');
+    expect(error?.querySelector('[data-f11-error-content]')).not.toBeNull();
     expect(field.getAttribute('aria-invalid')).toBe('true');
     expect(field.getAttribute('aria-describedby')).toContain(error?.id);
     expect(document.activeElement).toBe(field);
@@ -72,7 +74,8 @@ describe('FRAME11 form validation', () => {
     field.value = 'hallo@frame11.at';
     field.dispatchEvent(new InputEvent('input', { bubbles: true }));
 
-    expect(error?.hidden).toBe(true);
+    expect(error?.hasAttribute('data-f11-error-visible')).toBe(false);
+    expect(error?.getAttribute('aria-hidden')).toBe('true');
     expect(field.hasAttribute('data-f11-invalid')).toBe(false);
     expect(field.hasAttribute('aria-invalid')).toBe(false);
   });

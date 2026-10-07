@@ -12,7 +12,7 @@ import { formsModule } from './forms';
 import { integrationsModule } from './integrations';
 import { navigationModule } from './navigation';
 
-const VERSION = '0.3.0';
+const VERSION = '0.3.1';
 const registeredModules = [
   formsModule,
   navigationModule,
