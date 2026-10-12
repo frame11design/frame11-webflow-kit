@@ -4,6 +4,15 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-12
+
+### Added
+
+- Universal, opt-in show more/less behavior for Webflow Collection Lists.
+- Dependency-free staggered open and reverse-close animations with reduced-motion support.
+- Configurable initial item count, labels, timing, easing, and motion distance.
+- Accessible toggle state, dynamic item handling, runtime hooks, and the `f11:cms-toggle` browser event.
+
 ## [0.7.0] - 2026-10-12
 
 ### Added

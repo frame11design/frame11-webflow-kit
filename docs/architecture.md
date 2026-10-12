@@ -21,9 +21,10 @@ This keeps project-specific design editable in Webflow and shared behavior testa
 
 Feature modules expose a small definition with a unique name, a detection selector, and an initialization function. No abstract base classes, dependency injection container, or framework lifecycle is needed.
 
-Navigation, forms, successful form tracking, smooth scrolling, and consent
-follow the same one-time initialization lifecycle. Form success tracking is
-the first GTM-facing integration; additional integrations remain placeholders.
+Navigation, forms, CMS collection toggles, successful form tracking, smooth
+scrolling, and consent follow the same one-time initialization lifecycle. Form
+success tracking is the first GTM-facing integration; additional integrations
+remain placeholders.
 
 Feature configuration is deliberately local and declarative. A boolean
 `data-f11-*` attribute opts an element into behavior; related attributes select
@@ -76,6 +77,16 @@ and body. Resize notifications are batched into one animation frame before the
 scroll limit is recalculated. This accounts for delayed Webflow layout changes
 without adding project-specific scripts.
 
+## CMS collection toggles
+
+The CMS module operates on the rendered Webflow Collection List and does not
+change the CMS query or duplicate collection data. A wrapper opts in, an
+initial count controls the collapsed state, and Webflow classes continue to own
+the collection layout and button design. The native Web Animations API supplies
+dependency-free staggered item motion in collection order when opening and
+reverse order when closing. Runtime attributes expose state without prescribing
+customer-facing styles.
+
 ## Consent and integrations
 
 Consent has two timing layers:
@@ -95,4 +106,4 @@ not treated as a conversion.
 
 ## Distribution and releases
 
-Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. Cloudflare Pages serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.7.0/frame11.js`, never an unversioned file.
+Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. Cloudflare Pages serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.8.0/frame11.js`, never an unversioned file.

@@ -4,6 +4,10 @@
   display: none !important;
 }
 
+[data-f11-cms-extra][hidden] {
+  display: none !important;
+}
+
 [data-f11-error] {
   color: var(--f11-error-color, #b42318);
   display: grid;

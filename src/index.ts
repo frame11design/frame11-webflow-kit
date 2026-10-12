@@ -8,14 +8,16 @@ import {
   type Frame11InitOptions,
   type Frame11RuntimeState,
 } from './core/init';
+import { cmsModule } from './cms';
 import { consentModule } from './consent';
 import { formsModule } from './forms';
 import { integrationsModule } from './integrations';
 import { navigationModule } from './navigation';
 import { smoothScrollModule } from './smooth-scroll';
 
-const VERSION = '0.7.0';
+const VERSION = '0.8.0';
 const registeredModules = [
+  cmsModule,
   formsModule,
   navigationModule,
   smoothScrollModule,

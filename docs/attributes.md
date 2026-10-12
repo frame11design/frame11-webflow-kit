@@ -28,6 +28,18 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-form-track` | Enable successful Webflow submission tracking for this form | Available |
 | `data-f11-form-name` | Set the stable `form_name` value sent to GTM | Available |
 | `data-f11-form-success` | Identify a custom success element inside a Webflow form wrapper | Available |
+| `data-f11-cms-toggle` | Enable show more/less for a Collection List inside this wrapper | Available |
+| `data-f11-cms-list` | Identify a custom Collection List element | Available |
+| `data-f11-cms-item` | Identify items when Webflow's `.w-dyn-item` is not used | Available |
+| `data-f11-cms-button` | Toggle the Collection List between collapsed and expanded | Available |
+| `data-f11-cms-label` | Identify the mutable text inside a designed toggle button | Available |
+| `data-f11-cms-initial` | Set the initially visible item count | Available |
+| `data-f11-cms-stagger` | Set the item stagger in milliseconds | Available |
+| `data-f11-cms-duration` | Set each item animation duration in milliseconds | Available |
+| `data-f11-cms-distance` | Set the vertical motion distance in pixels | Available |
+| `data-f11-cms-easing` | Set the Web Animations easing value | Available |
+| `data-f11-cms-more-label` | Override the collapsed button label | Available |
+| `data-f11-cms-less-label` | Override the expanded button label | Available |
 | `data-f11-nav` | Enable the native Webflow mobile-navbar enhancement | Available |
 | `data-f11-nav-overlay` | Select the overlay tone: `none`, `dark`, or `light` | Available |
 | `data-f11-lenis` | Enable global Lenis smooth scrolling when placed on `<html>` | Available |
@@ -59,10 +71,14 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-total-steps` | Expose the total progress positions | Runtime state |
 | `data-f11-step-error-visible` | Reveal an optional step-level error summary | Runtime state |
 | `data-f11-form-track-ready` | Mark a form whose Webflow success state is being observed | Runtime state |
+| `data-f11-cms-ready` | Mark an initialized CMS toggle wrapper | Runtime state |
+| `data-f11-cms-expanded` | Mark an expanded CMS toggle wrapper | Runtime state |
+| `data-f11-cms-animating` | Mark an active CMS item transition | Runtime state |
+| `data-f11-cms-extra` | Mark Collection Items beyond the initial visible count | Runtime state |
 | `data-f11-nav-ready` | Mark an initialized native Webflow Navbar | Runtime state |
 | `data-f11-nav-open` | Mirror Webflow's current Navbar open state | Runtime state |
 | `data-f11-nav-overlay-ready` | Mark Webflow's generated Navbar overlay | Runtime state |
 | `data-f11-nav-overlay-open` | Animate the generated overlay when open | Runtime state |
 | `data-f11-lenis-ready` | Mark the initialized global smooth-scroll runtime | Runtime state |
 
-See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
+See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
