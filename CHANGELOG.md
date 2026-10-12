@@ -4,6 +4,14 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-12
+
+### Added
+
+- Opt-in native Webflow mobile-navbar enhancement through `data-f11-nav`.
+- Animated Webflow overlay with `none`, `dark`, and `light` tones plus CSS-variable customization.
+- Runtime navigation state hooks that follow Webflow's dynamically inserted `.w-nav-overlay`.
+
 ## [0.4.2] - 2026-10-07
 
 ### Added

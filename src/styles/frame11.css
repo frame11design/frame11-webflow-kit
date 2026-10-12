@@ -90,6 +90,74 @@ html[data-f11-scroll-lock] body {
   overflow: hidden;
 }
 
+/* Native Webflow navbar enhancement. Opt in with data-f11-nav. */
+@media screen and (max-width: 991px) {
+  [data-f11-nav-ready] {
+    --f11-nav-overlay-blur: 5px;
+    --f11-nav-overlay-color: transparent;
+    --f11-nav-overlay-duration: 280ms;
+    --f11-nav-overlay-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  [data-f11-nav-ready][data-f11-nav-overlay='dark'] {
+    --f11-nav-overlay-color: rgb(0 0 0 / 32%);
+  }
+
+  [data-f11-nav-ready][data-f11-nav-overlay='light'] {
+    --f11-nav-overlay-color: rgb(255 255 255 / 42%);
+  }
+
+  [data-f11-nav-ready] .w-nav-menu {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  [data-f11-nav-ready] > .w-container {
+    position: relative;
+    z-index: var(--f11-nav-content-z-index, 2);
+  }
+
+  [data-f11-nav-ready] .w-nav-overlay {
+    height: 100vh;
+    height: 100dvh;
+    isolation: isolate;
+    overflow: visible !important;
+    top: 0;
+  }
+
+  [data-f11-nav-overlay-ready]::before {
+    -webkit-backdrop-filter: blur(0);
+    animation: none;
+    backdrop-filter: blur(0);
+    background-color: var(--f11-nav-overlay-color);
+    content: '';
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
+
+  [data-f11-nav-overlay-open]::before {
+    animation: f11-nav-overlay-in var(--f11-nav-overlay-duration)
+      var(--f11-nav-overlay-easing) both;
+  }
+}
+
+@keyframes f11-nav-overlay-in {
+  from {
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-backdrop-filter: blur(var(--f11-nav-overlay-blur));
+    backdrop-filter: blur(var(--f11-nav-overlay-blur));
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-f11-error],
   [data-f11-step] > :not([data-f11-step-static]),
@@ -97,5 +165,12 @@ html[data-f11-scroll-lock] body {
   [data-f11-progress] {
     transform: none;
     transition: none;
+  }
+
+  [data-f11-nav-overlay-open]::before {
+    -webkit-backdrop-filter: blur(var(--f11-nav-overlay-blur));
+    animation: none;
+    backdrop-filter: blur(var(--f11-nav-overlay-blur));
+    opacity: 1;
   }
 }

@@ -25,7 +25,8 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-progress-current` | Render only the current progress number | Available |
 | `data-f11-progress-total` | Render only the total progress number | Available |
 | `data-f11-progress-complete` | Include valid submission as a final progress position | Available |
-| `data-f11-nav` | Enable navigation helpers | Placeholder |
+| `data-f11-nav` | Enable the native Webflow mobile-navbar enhancement | Available |
+| `data-f11-nav-overlay` | Select the overlay tone: `none`, `dark`, or `light` | Available |
 | `data-f11-consent` | Enable consent when placed on `<html>` | Available |
 | `data-f11-consent-config` | Identify the site-specific JSON configuration script | Available |
 | `data-f11-consent-open` | Open the preferences modal from a Webflow button or link | Available |
@@ -47,5 +48,9 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-current-step` | Expose the one-based current progress position | Runtime state |
 | `data-f11-total-steps` | Expose the total progress positions | Runtime state |
 | `data-f11-step-error-visible` | Reveal an optional step-level error summary | Runtime state |
+| `data-f11-nav-ready` | Mark an initialized native Webflow Navbar | Runtime state |
+| `data-f11-nav-open` | Mirror Webflow's current Navbar open state | Runtime state |
+| `data-f11-nav-overlay-ready` | Mark Webflow's generated Navbar overlay | Runtime state |
+| `data-f11-nav-overlay-open` | Animate the generated overlay when open | Runtime state |
 
-See [forms.md](forms.md) and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
+See [forms.md](forms.md), [navigation.md](navigation.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
