@@ -4,6 +4,14 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-12
+
+### Added
+
+- Opt-in Lenis smooth scrolling configured through `data-f11-lenis*` attributes.
+- Batched document-height observation for delayed Webflow layout changes and BFCache restores.
+- Optional, guarded GSAP ScrollTrigger synchronization and smooth anchor offsets.
+
 ## [0.5.0] - 2026-10-12
 
 ### Added

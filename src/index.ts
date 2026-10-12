@@ -1,3 +1,4 @@
+import 'lenis/dist/lenis.css';
 import './styles/frame11.css';
 
 import {
@@ -11,11 +12,13 @@ import { consentModule } from './consent';
 import { formsModule } from './forms';
 import { integrationsModule } from './integrations';
 import { navigationModule } from './navigation';
+import { smoothScrollModule } from './smooth-scroll';
 
-const VERSION = '0.5.0';
+const VERSION = '0.6.0';
 const registeredModules = [
   formsModule,
   navigationModule,
+  smoothScrollModule,
   consentModule,
   integrationsModule,
 ];
