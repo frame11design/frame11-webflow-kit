@@ -4,6 +4,15 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-10-12
+
+### Added
+
+- Opt-in Webflow form success tracking through `data-f11-form-track`.
+- HGW-compatible `form_submit_success` data-layer events with a configurable, stable `form_name`.
+- Duplicate-safe observation for multiple Webflow forms and custom success elements.
+- Bubbling `f11:form-success` browser events for project-specific behavior without vendor coupling.
+
 ## [0.6.0] - 2026-10-12
 
 ### Added

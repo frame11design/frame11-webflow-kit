@@ -21,7 +21,9 @@ This keeps project-specific design editable in Webflow and shared behavior testa
 
 Feature modules expose a small definition with a unique name, a detection selector, and an initialization function. No abstract base classes, dependency injection container, or framework lifecycle is needed.
 
-Navigation, forms, smooth scrolling, and consent follow the same one-time initialization lifecycle. General integrations remain placeholders.
+Navigation, forms, successful form tracking, smooth scrolling, and consent
+follow the same one-time initialization lifecycle. Form success tracking is
+the first GTM-facing integration; additional integrations remain placeholders.
 
 Feature configuration is deliberately local and declarative. A boolean
 `data-f11-*` attribute opts an element into behavior; related attributes select
@@ -85,6 +87,12 @@ Vanilla CookieConsent is bundled into FRAME11. Its callbacks, script handling, a
 
 Google Tag Manager fans out consent-aware configuration to Google Analytics, Google Ads, Meta Pixel, and similar tools. Google tags use Consent Mode, while other vendors can react to the `f11_consent_update` data-layer event. Vendor IDs and customer credentials belong in the customer environment, never in this repository.
 
+Form success tracking follows the same boundary. FRAME11 observes the Webflow
+success state and pushes the stable `form_submit_success` event with a
+project-defined `form_name`. GTM decides whether this triggers Google Ads,
+Meta Pixel, or another vendor. A click or submit attempt alone is deliberately
+not treated as a conversion.
+
 ## Distribution and releases
 
-Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. Cloudflare Pages serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.6.0/frame11.js`, never an unversioned file.
+Production builds produce `dist/v<version>/frame11.js` and `dist/v<version>/frame11.css`. Cloudflare Pages serves these retained version directories directly. Webflow projects must reference an explicit release path such as `/v0.7.0/frame11.js`, never an unversioned file.

@@ -25,6 +25,9 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-progress-current` | Render only the current progress number | Available |
 | `data-f11-progress-total` | Render only the total progress number | Available |
 | `data-f11-progress-complete` | Include valid submission as a final progress position | Available |
+| `data-f11-form-track` | Enable successful Webflow submission tracking for this form | Available |
+| `data-f11-form-name` | Set the stable `form_name` value sent to GTM | Available |
+| `data-f11-form-success` | Identify a custom success element inside a Webflow form wrapper | Available |
 | `data-f11-nav` | Enable the native Webflow mobile-navbar enhancement | Available |
 | `data-f11-nav-overlay` | Select the overlay tone: `none`, `dark`, or `light` | Available |
 | `data-f11-lenis` | Enable global Lenis smooth scrolling when placed on `<html>` | Available |
@@ -55,10 +58,11 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-current-step` | Expose the one-based current progress position | Runtime state |
 | `data-f11-total-steps` | Expose the total progress positions | Runtime state |
 | `data-f11-step-error-visible` | Reveal an optional step-level error summary | Runtime state |
+| `data-f11-form-track-ready` | Mark a form whose Webflow success state is being observed | Runtime state |
 | `data-f11-nav-ready` | Mark an initialized native Webflow Navbar | Runtime state |
 | `data-f11-nav-open` | Mirror Webflow's current Navbar open state | Runtime state |
 | `data-f11-nav-overlay-ready` | Mark Webflow's generated Navbar overlay | Runtime state |
 | `data-f11-nav-overlay-open` | Animate the generated overlay when open | Runtime state |
 | `data-f11-lenis-ready` | Mark the initialized global smooth-scroll runtime | Runtime state |
 
-See [forms.md](forms.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
+See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
