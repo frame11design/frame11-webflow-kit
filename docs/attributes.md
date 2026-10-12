@@ -42,6 +42,23 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-cms-less-label` | Override the expanded button label | Available |
 | `data-f11-nav` | Enable the native Webflow mobile-navbar enhancement | Available |
 | `data-f11-nav-overlay` | Select the overlay tone: `none`, `dark`, or `light` | Available |
+| `data-f11-nav-theme-default` | Set the default navbar appearance: `light` (default) or `dark` | Available |
+| `data-f11-nav-theme` | Request a `light` or `dark` navbar appearance while an element passes below it | Available |
+| `data-f11-nav-sticky` | Enable fixed reveal behavior: `always` or `direction` | Available |
+| `data-f11-nav-sticky-offset` | Set the sticky activation distance in pixels | Available |
+| `data-f11-nav-sticky-tolerance` | Set the scroll-direction tolerance in pixels | Available |
+| `data-f11-nav-sticky-space` | Preserve or remove the original navbar layout space | Available |
+| `data-f11-slider` | Enable a responsive multi-card slider | Available |
+| `data-f11-slider-viewport` | Identify the horizontal scroll viewport | Available |
+| `data-f11-slider-track` | Identify the flex track or Collection List | Available |
+| `data-f11-slider-item` | Identify cards or Collection Items | Available |
+| `data-f11-slider-prev` | Identify the previous control | Available |
+| `data-f11-slider-next` | Identify the next control | Available |
+| `data-f11-slider-cards-desktop` | Set the visible desktop card count | Available |
+| `data-f11-slider-cards-tablet` | Set the visible tablet card count | Available |
+| `data-f11-slider-cards-mobile` | Set the visible mobile card count | Available |
+| `data-f11-slider-gap` | Set the card gap as a CSS length | Available |
+| `data-f11-slider-autoplay` | Enable autoplay and optionally set its interval | Available |
 | `data-f11-lenis` | Enable global Lenis smooth scrolling when placed on `<html>` | Available |
 | `data-f11-lenis-duration` | Override scroll duration in seconds | Available |
 | `data-f11-lenis-wheel` | Enable or disable smoothed wheel input | Available |
@@ -79,6 +96,15 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-nav-open` | Mirror Webflow's current Navbar open state | Runtime state |
 | `data-f11-nav-overlay-ready` | Mark Webflow's generated Navbar overlay | Runtime state |
 | `data-f11-nav-overlay-open` | Animate the generated overlay when open | Runtime state |
+| `data-f11-nav-theme-current` | Expose the active navbar appearance | Runtime state |
+| `data-f11-nav-sticky-ready` | Mark a navbar prepared for sticky behavior | Runtime state |
+| `data-f11-nav-sticky-active` | Mark sticky behavior active beyond its offset | Runtime state |
+| `data-f11-nav-sticky-visible` | Mark the fixed navbar currently revealed | Runtime state |
+| `data-f11-nav-scroll-direction` | Expose the last meaningful scroll direction | Runtime state |
+| `data-f11-slider-ready` | Mark an initialized multi-card slider | Runtime state |
+| `data-f11-slider-scrollable` | Mark a slider whose content exceeds its viewport | Runtime state |
+| `data-f11-slider-disabled` | Mark an unavailable slider control | Runtime state |
+| `data-f11-slider-index` | Expose the nearest zero-based card index | Runtime state |
 | `data-f11-lenis-ready` | Mark the initialized global smooth-scroll runtime | Runtime state |
 
-See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
+See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [slider.md](slider.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.

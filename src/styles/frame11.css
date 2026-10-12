@@ -94,6 +94,63 @@ html[data-f11-scroll-lock] body {
   overflow: hidden;
 }
 
+/* Responsive multi-card slider. Webflow remains responsible for card design. */
+[data-f11-slider-ready] {
+  --f11-slider-cards: 3.4;
+  --f11-slider-gap: 2rem;
+}
+
+[data-f11-slider-ready]
+  :is([data-f11-slider-viewport], .slider-viewport) {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-f11-slider-ready]
+  :is([data-f11-slider-viewport], .slider-viewport)::-webkit-scrollbar {
+  display: none;
+}
+
+[data-f11-slider-ready] :is([data-f11-slider-track], .slider-track) {
+  display: flex;
+  gap: var(--f11-slider-gap);
+  overflow: visible;
+}
+
+[data-f11-slider-ready] :is([data-f11-slider-item], .slider-element) {
+  flex: 0 0 var(--f11-slider-card-width, 100%);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+[data-f11-slider-disabled] {
+  pointer-events: none;
+}
+
+/* Optional fixed header behavior. Opt in with data-f11-nav-sticky. */
+[data-f11-nav-sticky-spacer] {
+  height: 0;
+  pointer-events: none;
+}
+
+[data-f11-nav-sticky-ready][data-f11-nav-sticky-active] {
+  inset: var(--f11-nav-sticky-top, 0) 0 auto;
+  position: fixed;
+  transform: translateY(calc(-100% - var(--f11-nav-sticky-top, 0px)));
+  transition: transform var(--f11-nav-sticky-duration, 420ms)
+    var(--f11-nav-sticky-easing, cubic-bezier(0.22, 1, 0.36, 1));
+  width: 100%;
+  will-change: transform;
+  z-index: var(--f11-nav-sticky-z-index, 1000);
+}
+
+[data-f11-nav-sticky-ready][data-f11-nav-sticky-active][data-f11-nav-sticky-visible] {
+  transform: translateY(0);
+}
+
 /* Native Webflow navbar enhancement. Opt in with data-f11-nav. */
 @media screen and (max-width: 991px) {
   [data-f11-nav-ready] {
@@ -168,6 +225,10 @@ html[data-f11-scroll-lock] body {
   [data-f11-step-viewport],
   [data-f11-progress] {
     transform: none;
+    transition: none;
+  }
+
+  [data-f11-nav-sticky-ready][data-f11-nav-sticky-active] {
     transition: none;
   }
 

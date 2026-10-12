@@ -13,13 +13,15 @@ import { consentModule } from './consent';
 import { formsModule } from './forms';
 import { integrationsModule } from './integrations';
 import { navigationModule } from './navigation';
+import { sliderModule } from './slider';
 import { smoothScrollModule } from './smooth-scroll';
 
-const VERSION = '0.8.0';
+const VERSION = '0.9.0';
 const registeredModules = [
   cmsModule,
   formsModule,
   navigationModule,
+  sliderModule,
   smoothScrollModule,
   consentModule,
   integrationsModule,

@@ -4,6 +4,16 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-10-13
+
+### Added
+
+- Dependency-free, opt-in responsive multi-card slider based on the Katrin Maschetzke and HGW Binder review sliders.
+- Configurable fractional card counts, CSS gap, arrow controls, optional autoplay, CMS item observation, and accessible states.
+- Section-aware light/dark navigation themes with a configurable `light` default.
+- Two slide-in sticky-header modes: always visible after an offset, or direction-aware reveal on upward scrolling.
+- Sticky offset, movement tolerance, layout-space handling, CSS variables, runtime attributes, and browser events.
+
 ## [0.8.0] - 2026-10-12
 
 ### Added

@@ -4,8 +4,9 @@ FRAME11 Webflow Kit is a small TypeScript library for reusable behavior across W
 
 The project is intentionally small. Form validation, multi-step forms, styled
 submit triggers, successful Webflow form tracking for GTM, CMS show more/less,
-native Webflow mobile-navigation enhancement, opt-in Lenis smooth scrolling,
-and cookie consent are implemented.
+responsive multi-card sliders, native Webflow mobile-navigation enhancement
+with theme and sticky states, opt-in Lenis smooth scrolling, and cookie consent
+are implemented.
 
 ## Principles
 
@@ -54,8 +55,8 @@ npm run build
 The production build creates an immutable directory from the package version:
 
 ```text
-dist/v0.8.0/frame11.js
-dist/v0.8.0/frame11.css
+dist/v0.9.0/frame11.js
+dist/v0.9.0/frame11.css
 ```
 
 `frame11.js` is an immediately invoked browser bundle, so it can be loaded by a normal Webflow `<script>` tag without a module loader. Published version directories are retained side by side so an existing Webflow project is never silently updated.
@@ -82,11 +83,11 @@ Use a fixed release path rather than an unversioned URL:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.frame11.at/v0.8.0/frame11.css"
+  href="https://cdn.frame11.at/v0.9.0/frame11.css"
 >
 <script
   defer
-  src="https://cdn.frame11.at/v0.8.0/frame11.js"
+  src="https://cdn.frame11.at/v0.9.0/frame11.js"
 ></script>
 ```
 
@@ -99,7 +100,8 @@ See [docs/webflow-setup.md](docs/webflow-setup.md) before using a release in Web
 - [Forms](docs/forms.md)
 - [Form success tracking](docs/form-tracking.md)
 - [CMS show more/less](docs/cms.md)
-- [Mobile navigation](docs/navigation.md)
+- [Responsive multi-card slider](docs/slider.md)
+- [Navigation](docs/navigation.md)
 - [Lenis smooth scroll](docs/smooth-scroll.md)
 - [Cookie consent](docs/consent.md)
 - [Webflow setup](docs/webflow-setup.md)
@@ -110,7 +112,7 @@ See [docs/webflow-setup.md](docs/webflow-setup.md) before using a release in Web
 The project follows Semantic Versioning. The `0.x` series is for development of the system; `1.0.0` will be the first stable production release.
 
 The package version determines the immutable CDN directory. For example, version
-`0.8.0` builds to `dist/v0.8.0/`. Never ship behavior changes under an existing
+`0.9.0` builds to `dist/v0.9.0/`. Never ship behavior changes under an existing
 version path.
 
 For a release:
