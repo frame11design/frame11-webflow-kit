@@ -40,6 +40,14 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-cms-easing` | Set the Web Animations easing value | Available |
 | `data-f11-cms-more-label` | Override the collapsed button label | Available |
 | `data-f11-cms-less-label` | Override the expanded button label | Available |
+| `data-f11-date` | Enable localized formatting and optionally provide the ISO date value | Available |
+| `data-f11-date-value` | Provide the ISO date separately from the opt-in attribute | Available |
+| `data-f11-date-config` | Identify the optional per-language JSON configuration script | Available |
+| `data-f11-date-locale` | Override the current page locale for one date | Available |
+| `data-f11-date-day` | Set the day style or omit it with `none` | Available |
+| `data-f11-date-month` | Set the month style or omit it with `none` | Available |
+| `data-f11-date-year` | Set the year style or omit it with `none` | Available |
+| `data-f11-date-weekday` | Add a localized weekday style | Available |
 | `data-f11-nav` | Enable the native Webflow mobile-navbar enhancement | Available |
 | `data-f11-nav-overlay` | Select the overlay tone: `none`, `dark`, or `light` | Available |
 | `data-f11-nav-theme-default` | Set the default navbar appearance: `light` (default) or `dark` | Available |
@@ -92,6 +100,9 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-cms-expanded` | Mark an expanded CMS toggle wrapper | Runtime state |
 | `data-f11-cms-animating` | Mark an active CMS item transition | Runtime state |
 | `data-f11-cms-extra` | Mark Collection Items beyond the initial visible count | Runtime state |
+| `data-f11-date-ready` | Mark a successfully formatted date | Runtime state |
+| `data-f11-date-locale-resolved` | Expose the locale resolved by the browser | Runtime state |
+| `data-f11-date-error` | Expose an invalid date input without changing its text | Runtime state |
 | `data-f11-nav-ready` | Mark an initialized native Webflow Navbar | Runtime state |
 | `data-f11-nav-open` | Mirror Webflow's current Navbar open state | Runtime state |
 | `data-f11-nav-overlay-ready` | Mark Webflow's generated Navbar overlay | Runtime state |
@@ -107,4 +118,4 @@ All public FRAME11 attributes use the `data-f11-*` namespace. Attributes are pre
 | `data-f11-slider-index` | Expose the nearest zero-based card index | Runtime state |
 | `data-f11-lenis-ready` | Mark the initialized global smooth-scroll runtime | Runtime state |
 
-See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [slider.md](slider.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.
+See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [date-formatting.md](date-formatting.md), [slider.md](slider.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md) for the released module contracts. Boolean attributes should generally use presence (`data-f11-example`) or the values `true` and `false`; values must not contain secrets or customer credentials.

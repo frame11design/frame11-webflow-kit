@@ -10,15 +10,17 @@ import {
 } from './core/init';
 import { cmsModule } from './cms';
 import { consentModule } from './consent';
+import { dateModule } from './date';
 import { formsModule } from './forms';
 import { integrationsModule } from './integrations';
 import { navigationModule } from './navigation';
 import { sliderModule } from './slider';
 import { smoothScrollModule } from './smooth-scroll';
 
-const VERSION = '0.9.0';
+const VERSION = '0.10.0';
 const registeredModules = [
   cmsModule,
+  dateModule,
   formsModule,
   navigationModule,
   sliderModule,

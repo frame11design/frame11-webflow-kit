@@ -4,6 +4,14 @@ All notable changes to FRAME11 Webflow Kit will be documented in this file. The 
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-10-13
+
+### Added
+
+- Opt-in localized date formatting for stable Webflow `YYYY-MM-DD` values.
+- Automatic locale selection from Webflow's `<html lang>` value, per-language JSON rules, and per-element format overrides.
+- Time-zone-safe calendar parsing, dynamic CMS item handling, runtime states, and the `f11:date-formatted` browser event.
+
 ## [0.9.0] - 2026-10-13
 
 ### Added

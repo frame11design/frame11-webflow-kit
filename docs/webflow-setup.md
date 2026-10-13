@@ -9,7 +9,7 @@ Add a version-pinned stylesheet link in the Webflow site's head custom code:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.frame11.at/v0.9.0/frame11.css"
+  href="https://cdn.frame11.at/v0.10.0/frame11.css"
 >
 ```
 
@@ -20,7 +20,7 @@ Add the script before the closing body tag. `defer` is recommended even though t
 ```html
 <script
   defer
-  src="https://cdn.frame11.at/v0.9.0/frame11.js"
+  src="https://cdn.frame11.at/v0.10.0/frame11.js"
 ></script>
 ```
 
@@ -30,7 +30,7 @@ Change only the explicit version tag when upgrading. Never use `latest` for a cu
 
 Add documented `data-f11-*` custom attributes to the relevant Webflow elements. Do not put API keys, IDs, personal data, or credentials into these attributes.
 
-Forms, successful form tracking, CMS show more/less, navigation, Lenis smooth scrolling, and consent are available. See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md). Additional integrations remain placeholders until their contracts are documented and implemented.
+Forms, successful form tracking, CMS show more/less, localized date formatting, navigation, Lenis smooth scrolling, and consent are available. See [forms.md](forms.md), [form-tracking.md](form-tracking.md), [cms.md](cms.md), [date-formatting.md](date-formatting.md), [navigation.md](navigation.md), [smooth-scroll.md](smooth-scroll.md), and [consent.md](consent.md). Additional integrations remain placeholders until their contracts are documented and implemented.
 
 ## Debug locally or on staging
 
